@@ -1,0 +1,64 @@
+name: Bin collections
+
+on:
+  schedule:
+    # Times are UTC. Early morning and late afternoon, so changes show up the same day.
+    - cron: "17 4 * * *"
+    - cron: "17 16 * * *"
+  workflow_dispatch:        # adds a "Run workflow" button on the Actions tab
+  push:
+    branches: [main]
+    paths:
+      - "watford_bins.py"
+      - "bins_template.html"
+      - ".github/workflows/bins.yml"
+
+permissions:
+  contents: write           # save updated files back to the repo
+  pages: write              # publish to GitHub Pages
+  id-token: write           # required by the Pages deploy step
+
+concurrency:
+  group: bins
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v7
+
+      - name: Look up bin dates
+        env:
+          UPRN: ${{ secrets.UPRN }}
+        run: python3 watford_bins.py site
+
+      - name: Save changes to the repo
+        # Only commits when dates change (about weekly). This also counts as
+        # repository activity, so GitHub won't pause the schedule.
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            git commit -m "Bin update $(date -u +%F)"
+            git push
+          fi
+
+      - name: Set up Pages
+        uses: actions/configure-pages@v6
+
+      - name: Package the site
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+
+      - name: Publish to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v5
