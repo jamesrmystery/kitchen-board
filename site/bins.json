@@ -1,0 +1,36 @@
+{
+  "bins": {
+    "green": {
+      "name": "Green bin",
+      "detail": "Garden waste",
+      "body": "#2f8f3e",
+      "lid": "#2f8f3e",
+      "every": 14,
+      "next": "2026-10-23"
+    },
+    "black": {
+      "name": "Black bin",
+      "detail": "General waste",
+      "body": "#2b2b2b",
+      "lid": "#2b2b2b",
+      "every": 14,
+      "next": "2026-10-30"
+    },
+    "blue": {
+      "name": "Blue bin",
+      "detail": "Recycling",
+      "body": "#2b2b2b",
+      "lid": "#1e6fd9",
+      "every": 14,
+      "next": "2026-10-23"
+    },
+    "food": {
+      "name": "Food bin",
+      "detail": "Food waste",
+      "body": "#7a4a22",
+      "lid": "#7a4a22",
+      "every": 7,
+      "next": "2026-10-23"
+    }
+  }
+}

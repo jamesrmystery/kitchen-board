@@ -1,0 +1,189 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//home//watford-bins//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Bins
+X-APPLE-CALENDAR-COLOR:#2f8f3e
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+BEGIN:VEVENT
+UID:blue-20261023@watford-bins
+DTSTAMP:20261023T000000Z
+DTSTART;VALUE=DATE:20261023
+DTEND;VALUE=DATE:20261024
+SUMMARY:Blue bin (recycling)
+DESCRIPTION:Confirmed by Watford Council. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:food-20261023@watford-bins
+DTSTAMP:20261023T000000Z
+DTSTART;VALUE=DATE:20261023
+DTEND;VALUE=DATE:20261024
+SUMMARY:Food bin (food waste)
+DESCRIPTION:Confirmed by Watford Council. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:green-20261023@watford-bins
+DTSTAMP:20261023T000000Z
+DTSTART;VALUE=DATE:20261023
+DTEND;VALUE=DATE:20261024
+SUMMARY:Green bin (garden waste)
+DESCRIPTION:Confirmed by Watford Council. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:black-20261030@watford-bins
+DTSTAMP:20261030T000000Z
+DTSTART;VALUE=DATE:20261030
+DTEND;VALUE=DATE:20261031
+SUMMARY:Black bin (general waste)
+DESCRIPTION:Confirmed by Watford Council. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:food-20261030@watford-bins
+DTSTAMP:20261030T000000Z
+DTSTART;VALUE=DATE:20261030
+DTEND;VALUE=DATE:20261031
+SUMMARY:Food bin (food waste)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:blue-20261106@watford-bins
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261107
+SUMMARY:Blue bin (recycling)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:food-20261106@watford-bins
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261107
+SUMMARY:Food bin (food waste)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:green-20261106@watford-bins
+DTSTAMP:20261106T000000Z
+DTSTART;VALUE=DATE:20261106
+DTEND;VALUE=DATE:20261107
+SUMMARY:Green bin (garden waste)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:black-20261113@watford-bins
+DTSTAMP:20261113T000000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261114
+SUMMARY:Black bin (general waste)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:food-20261113@watford-bins
+DTSTAMP:20261113T000000Z
+DTSTART;VALUE=DATE:20261113
+DTEND;VALUE=DATE:20261114
+SUMMARY:Food bin (food waste)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:blue-20261120@watford-bins
+DTSTAMP:20261120T000000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:Blue bin (recycling)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:food-20261120@watford-bins
+DTSTAMP:20261120T000000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:Food bin (food waste)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:green-20261120@watford-bins
+DTSTAMP:20261120T000000Z
+DTSTART;VALUE=DATE:20261120
+DTEND;VALUE=DATE:20261121
+SUMMARY:Green bin (garden waste)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:black-20261127@watford-bins
+DTSTAMP:20261127T000000Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261128
+SUMMARY:Black bin (general waste)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:food-20261127@watford-bins
+DTSTAMP:20261127T000000Z
+DTSTART;VALUE=DATE:20261127
+DTEND;VALUE=DATE:20261128
+SUMMARY:Food bin (food waste)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:blue-20261204@watford-bins
+DTSTAMP:20261204T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+SUMMARY:Blue bin (recycling)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:food-20261204@watford-bins
+DTSTAMP:20261204T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+SUMMARY:Food bin (food waste)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:green-20261204@watford-bins
+DTSTAMP:20261204T000000Z
+DTSTART;VALUE=DATE:20261204
+DTEND;VALUE=DATE:20261205
+SUMMARY:Green bin (garden waste)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:black-20261211@watford-bins
+DTSTAMP:20261211T000000Z
+DTSTART;VALUE=DATE:20261211
+DTEND;VALUE=DATE:20261212
+SUMMARY:Black bin (general waste)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:food-20261211@watford-bins
+DTSTAMP:20261211T000000Z
+DTSTART;VALUE=DATE:20261211
+DTEND;VALUE=DATE:20261212
+SUMMARY:Food bin (food waste)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+END:VCALENDAR
