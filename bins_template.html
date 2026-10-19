@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="1800">
+<title>Bin Day</title>
+<style>
+  :root {
+    --text: #ffffff;
+    --muted: rgba(255,255,255,.62);
+    --alert: #ffb020;
+    --today: #ff5a4f;
+    --outline: rgba(255,255,255,.55);
+  }
+  /* add ?light to the URL for a light DAKboard background */
+  body.light { --text:#16181c; --muted:rgba(0,0,0,.55); --alert:#c77700; --today:#d0342c; --outline:rgba(0,0,0,.35); }
+  html, body { margin:0; height:100%; background:transparent; }
+  body {
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--text); display:flex; flex-direction:column; justify-content:center;
+    padding: 4vmin 5vmin; box-sizing:border-box; gap: 3vmin;
+  }
+  .when { display:flex; align-items:baseline; gap:3vmin; flex-wrap:wrap; }
+  .day  { font-size: 9vmin; font-weight:700; letter-spacing:-.02em; line-height:1; }
+  .tag  { font-size: 5vmin; font-weight:700; padding:.15em .55em; border-radius:.5em;
+          text-transform:uppercase; letter-spacing:.04em; line-height:1.1; }
+  .tag.tonight { background: var(--alert); color:#16181c; }
+  .tag.today   { background: var(--today); color:#fff; }
+  .tag.soon    { color: var(--muted); padding-left:0; text-transform:none; letter-spacing:0; font-weight:500; }
+  .bins { display:flex; gap:4vmin; flex-wrap:wrap; }
+  .bin  { display:flex; flex-direction:column; align-items:center; gap:1.2vmin; }
+  .bin svg { height: 22vmin; width:auto; }
+  .bin .n  { font-size: 4.2vmin; font-weight:600; }
+  .bin .d  { font-size: 3.4vmin; color: var(--muted); margin-top:-.8vmin; }
+  .then { display:flex; align-items:center; gap:2.5vmin; font-size:4.4vmin; color:var(--muted);
+          border-top:1px solid var(--outline); padding-top:2.5vmin; flex-wrap:wrap; }
+  .then svg { height: 7vmin; width:auto; }
+  .then b { color: var(--text); font-weight:600; }
+  .err { font-size:4vmin; color:var(--muted); }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const DATA = /*__DATA__*/null;
+if (/[?&]light\b/.test(location.search)) document.body.classList.add('light');
+
+function binSvg(b) {
+  // simple wheelie bin: body colour + lid colour, outlined so a black bin shows on a dark board
+  return `<svg viewBox="0 0 60 80" aria-hidden="true">
+    <path d="M10 18 L50 18 L46 70 L14 70 Z" fill="${b.body}" stroke="var(--outline)" stroke-width="1.5"/>
+    <rect x="6" y="10" width="48" height="9" rx="2.5" fill="${b.lid}" stroke="var(--outline)" stroke-width="1.5"/>
+    <rect x="22" y="6" width="16" height="5" rx="2" fill="${b.lid}" stroke="var(--outline)" stroke-width="1.2"/>
+    <line x1="20" y1="28" x2="20" y2="60" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
+    <line x1="30" y1="28" x2="30" y2="60" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
+    <line x1="40" y1="28" x2="40" y2="60" stroke="rgba(255,255,255,.18)" stroke-width="2"/>
+    <circle cx="18" cy="72" r="6" fill="#111" stroke="var(--outline)" stroke-width="1.5"/>
+    <circle cx="42" cy="72" r="6" fill="#111" stroke="var(--outline)" stroke-width="1.5"/>
+  </svg>`;
+}
+
+function midnight(d) { const x = new Date(d); x.setHours(0,0,0,0); return x; }
+function parseISO(s) { const [y,m,d] = s.split('-').map(Number); return new Date(y, m-1, d); }
+
+function render() {
+  const app = document.getElementById('app');
+  if (!DATA) { app.innerHTML = '<div class="err">No bin data yet</div>'; return; }
+
+  const today = midnight(new Date());
+  // Roll each bin forward past today if the data is a few days stale
+  const due = {};
+  for (const [k, b] of Object.entries(DATA.bins)) {
+    b.key = k;
+    let d = parseISO(b.next);
+    while (d < today) d = new Date(d.getFullYear(), d.getMonth(), d.getDate() + b.every);
+    // Once today's collection is likely done (after 6pm), look to the next one
+    if (+d === +today && new Date().getHours() >= 18) d = new Date(d.getFullYear(), d.getMonth(), d.getDate() + b.every);
+    // next few occurrences, so weekly bins also appear in the "then" row
+    for (let i = 0; i < 3; i++) {
+      const t = new Date(d.getFullYear(), d.getMonth(), d.getDate() + i * b.every);
+      (due[+t] ||= []).push(b);
+    }
+  }
+  const order = Object.keys(DATA.bins);
+  for (const k in due) due[k].sort((a, b) => order.indexOf(a.key) - order.indexOf(b.key));
+  const days = Object.keys(due).map(Number).sort((a,b)=>a-b);
+  const fmt = t => new Date(t).toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'short' });
+  const diff = t => Math.round((t - today) / 86400000);
+
+  const first = days[0], n = diff(first);
+  let tag;
+  if (n === 0) tag = '<span class="tag today">Today</span>';
+  else if (n === 1) tag = '<span class="tag tonight">Put out tonight</span>';
+  else tag = `<span class="tag soon">in ${n} days</span>`;
+
+  let out = `<div class="when"><div class="day">${n === 1 ? 'Tomorrow' : fmt(first)}</div>${tag}</div>
+    <div class="bins">${due[first].map(b => `<div class="bin">${binSvg(b)}<div class="n">${b.name}</div><div class="d">${b.detail}</div></div>`).join('')}</div>`;
+
+  if (days[1]) {
+    out += `<div class="then">Then <b>${fmt(days[1])}</b>${due[days[1]].map(b => binSvg(b)).join('')}<span>${due[days[1]].map(b=>b.name).join(', ')}</span></div>`;
+  }
+  app.innerHTML = out;
+}
+render();
+setInterval(render, 10 * 60 * 1000);
+</script>
+</body>
+</html>
