@@ -28,14 +28,16 @@
   .tag.tonight { background: var(--alert); color:#16181c; }
   .tag.today   { background: var(--today); color:#fff; }
   .tag.soon    { color: var(--muted); padding-left:0; text-transform:none; letter-spacing:0; font-weight:500; }
-  .bins { display:flex; gap:4vmin; flex-wrap:wrap; }
+  .bins { display:flex; gap:4vmin; flex-wrap:wrap; align-items:flex-end; }
   .bin  { display:flex; flex-direction:column; align-items:center; gap:1.2vmin; }
   .bin svg { height: 22vmin; width:auto; }
+  .bin svg.food { height: 11vmin; }   /* food caddy: half the height of the wheelie bins */
   .bin .n  { font-size: 4.2vmin; font-weight:600; }
   .bin .d  { font-size: 3.4vmin; color: var(--muted); margin-top:-.8vmin; }
   .then { display:flex; align-items:center; gap:2.5vmin; font-size:4.4vmin; color:var(--muted);
           border-top:1px solid var(--outline); padding-top:2.5vmin; flex-wrap:wrap; }
   .then svg { height: 7vmin; width:auto; }
+  .then svg.food { height: 3.5vmin; align-self:flex-end; }
   .then b { color: var(--text); font-weight:600; }
   .err { font-size:4vmin; color:var(--muted); }
 </style>
@@ -48,7 +50,7 @@ if (/[?&]light\b/.test(location.search)) document.body.classList.add('light');
 
 function binSvg(b) {
   // simple wheelie bin: body colour + lid colour, outlined so a black bin shows on a dark board
-  return `<svg viewBox="0 0 60 80" aria-hidden="true">
+  return `<svg class="${b.key}" viewBox="0 0 60 80" aria-hidden="true">
     <path d="M10 18 L50 18 L46 70 L14 70 Z" fill="${b.body}" stroke="var(--outline)" stroke-width="1.5"/>
     <rect x="6" y="10" width="48" height="9" rx="2.5" fill="${b.lid}" stroke="var(--outline)" stroke-width="1.5"/>
     <rect x="22" y="6" width="16" height="5" rx="2" fill="${b.lid}" stroke="var(--outline)" stroke-width="1.2"/>
