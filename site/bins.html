@@ -40,6 +40,10 @@
   .then svg.food { height: 3.5vmin; align-self:flex-end; }
   .then b { color: var(--text); font-weight:600; }
   .err { font-size:4vmin; color:var(--muted); }
+  /* status dot, top-right: green = last council look-up worked, red = it didn't */
+  .status { position:fixed; top:2.5vmin; right:2.5vmin; width:1.8vmin; height:1.8vmin;
+            border-radius:50%; background:#2fbf4a; box-shadow:0 0 0 .3vmin rgba(0,0,0,.25); }
+  .status.bad { background:#ff3b30; }
 </style>
 </head>
 <body>
@@ -102,6 +106,11 @@ function render() {
   if (days[1]) {
     out += `<div class="then">Then <b>${fmt(days[1])}</b>${due[days[1]].map(b => binSvg(b)).join('')}<span>${due[days[1]].map(b=>b.name).join(', ')}</span></div>`;
   }
+  // Red if the last run couldn't reach the council, or if the confirmed dates are
+  // over a week old (runs stop publishing at that point, so the flag can't update).
+  const oldest = Math.min(...Object.values(DATA.bins).map(b => +parseISO(b.next)));
+  const ok = DATA.ok !== false && diff(oldest) >= -7;
+  out += `<div class="status${ok ? '' : ' bad'}" title="${ok ? 'Bin data up to date' : 'Bin data not updating'}"></div>`;
   app.innerHTML = out;
 }
 render();
