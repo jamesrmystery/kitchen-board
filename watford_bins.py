@@ -159,9 +159,11 @@ def last_good(path):
 def main():
     if not re.fullmatch(r"\d{6,12}", UPRN):
         raise RuntimeError("UPRN secret is missing or not a number - see setup guide")
+    ok = True
     try:
         collections = fetch_collections(UPRN)
     except Exception as e:
+        ok = False
         # Council look-up down: rebuild the tile from the last good dates so layout
         # changes still publish. Fail only once the data is more than a week stale.
         saved = os.path.join(OUTPUT_DIR, "bins.json")
@@ -174,13 +176,16 @@ def main():
                                f"({e!r}); last confirmed date {oldest:%a %d %b}") from e
         print(f"::warning::Council look-up failed ({e!r}). "
               f"Rebuilt the tile from the last good dates.")
-    write_site(collections)
+    write_site(collections, ok)
 
 
-def write_site(collections):
+def write_site(collections, ok=True):
     events = projected(collections, WEEKS_AHEAD)
 
     payload = {
+        # Status dot on the tile: green = last council look-up worked, red = it failed.
+        # A plain flag (no timestamp) so the file only changes when the status flips.
+        "ok": ok,
         "bins": {k: {"name": BINS[k]["name"], "detail": BINS[k]["detail"],
                      "body": BINS[k]["colour"], "lid": BINS[k]["lid"],
                      "every": BINS[k]["every"], "next": d.isoformat()}
