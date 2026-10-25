@@ -82,6 +82,8 @@ def fetch_collections(uprn):
     with opener.open(req, timeout=30) as r:
         data = json.load(r)
 
+    if data.get("status") == "error":
+        raise RuntimeError("council said: " + str(data.get("error", {}).get("message", data)))
     disp = data["integration"]["transformed"]["rows_data"]["0"]["dispHTML"]
     return parse_disp_html(disp)
 
@@ -143,10 +145,39 @@ def write(path, text):
     os.replace(tmp, path)
 
 
+STALE_DAYS = 7   # how long the council can be unreachable before the run fails (and GitHub emails)
+
+
+def last_good(path):
+    """Next dates as last confirmed by the council. Kept as-is (not rolled forward),
+    so staleness can be measured; the tile rolls them forward in the browser."""
+    with open(path, encoding="utf-8") as f:
+        saved = json.load(f)["bins"]
+    return {k: dt.date.fromisoformat(v["next"]) for k, v in saved.items() if k in BINS}
+
+
 def main():
     if not re.fullmatch(r"\d{6,12}", UPRN):
         raise RuntimeError("UPRN secret is missing or not a number - see setup guide")
-    collections = fetch_collections(UPRN)
+    try:
+        collections = fetch_collections(UPRN)
+    except Exception as e:
+        # Council look-up down: rebuild the tile from the last good dates so layout
+        # changes still publish. Fail only once the data is more than a week stale.
+        saved = os.path.join(OUTPUT_DIR, "bins.json")
+        if not os.path.exists(saved):
+            raise
+        collections = last_good(saved)
+        oldest = min(collections.values())
+        if (dt.date.today() - oldest).days > STALE_DAYS:
+            raise RuntimeError(f"Council look-up has failed for over {STALE_DAYS} days "
+                               f"({e!r}); last confirmed date {oldest:%a %d %b}") from e
+        print(f"::warning::Council look-up failed ({e!r}). "
+              f"Rebuilt the tile from the last good dates.")
+    write_site(collections)
+
+
+def write_site(collections):
     events = projected(collections, WEEKS_AHEAD)
 
     payload = {
