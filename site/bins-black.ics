@@ -7,21 +7,12 @@ X-WR-CALNAME:Bins - Black bin
 X-APPLE-CALENDAR-COLOR:#444444
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 BEGIN:VEVENT
-UID:black-20261030@watford-bins
-DTSTAMP:20261030T000000Z
-DTSTART;VALUE=DATE:20261030
-DTEND;VALUE=DATE:20261031
-SUMMARY:Black bin (general waste)
-DESCRIPTION:Confirmed by Watford Council. Out the night before or by 6am.
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:black-20261113@watford-bins
 DTSTAMP:20261113T000000Z
 DTSTART;VALUE=DATE:20261113
 DTEND;VALUE=DATE:20261114
 SUMMARY:Black bin (general waste)
-DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+DESCRIPTION:Confirmed by Watford Council. Out the night before or by 6am.
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -38,6 +29,15 @@ UID:black-20261211@watford-bins
 DTSTAMP:20261211T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261212
+SUMMARY:Black bin (general waste)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:black-20261225@watford-bins
+DTSTAMP:20261225T000000Z
+DTSTART;VALUE=DATE:20261225
+DTEND;VALUE=DATE:20261226
 SUMMARY:Black bin (general waste)
 DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
 TRANSP:TRANSPARENT
