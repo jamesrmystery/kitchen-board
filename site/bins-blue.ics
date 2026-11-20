@@ -7,21 +7,12 @@ X-WR-CALNAME:Bins - Blue bin
 X-APPLE-CALENDAR-COLOR:#1e6fd9
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 BEGIN:VEVENT
-UID:blue-20261120@watford-bins
-DTSTAMP:20261120T000000Z
-DTSTART;VALUE=DATE:20261120
-DTEND;VALUE=DATE:20261121
-SUMMARY:Blue bin (recycling)
-DESCRIPTION:Confirmed by Watford Council. Out the night before or by 6am.
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:blue-20261204@watford-bins
 DTSTAMP:20261204T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:Blue bin (recycling)
-DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+DESCRIPTION:Confirmed by Watford Council. Out the night before or by 6am.
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -38,6 +29,15 @@ UID:blue-20270101@watford-bins
 DTSTAMP:20270101T000000Z
 DTSTART;VALUE=DATE:20270101
 DTEND;VALUE=DATE:20270102
+SUMMARY:Blue bin (recycling)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:blue-20270115@watford-bins
+DTSTAMP:20270115T000000Z
+DTSTART;VALUE=DATE:20270115
+DTEND;VALUE=DATE:20270116
 SUMMARY:Blue bin (recycling)
 DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
 TRANSP:TRANSPARENT
