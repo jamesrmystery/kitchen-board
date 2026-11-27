@@ -7,24 +7,6 @@ X-WR-CALNAME:Bins
 X-APPLE-CALENDAR-COLOR:#2f8f3e
 REFRESH-INTERVAL;VALUE=DURATION:PT12H
 BEGIN:VEVENT
-UID:black-20261127@watford-bins
-DTSTAMP:20261127T000000Z
-DTSTART;VALUE=DATE:20261127
-DTEND;VALUE=DATE:20261128
-SUMMARY:Black bin (general waste)
-DESCRIPTION:Confirmed by Watford Council. Out the night before or by 6am.
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
-UID:food-20261127@watford-bins
-DTSTAMP:20261127T000000Z
-DTSTART;VALUE=DATE:20261127
-DTEND;VALUE=DATE:20261128
-SUMMARY:Food bin (food waste)
-DESCRIPTION:Confirmed by Watford Council. Out the night before or by 6am.
-TRANSP:TRANSPARENT
-END:VEVENT
-BEGIN:VEVENT
 UID:blue-20261204@watford-bins
 DTSTAMP:20261204T000000Z
 DTSTART;VALUE=DATE:20261204
@@ -39,7 +21,7 @@ DTSTAMP:20261204T000000Z
 DTSTART;VALUE=DATE:20261204
 DTEND;VALUE=DATE:20261205
 SUMMARY:Food bin (food waste)
-DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+DESCRIPTION:Confirmed by Watford Council. Out the night before or by 6am.
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -57,7 +39,7 @@ DTSTAMP:20261211T000000Z
 DTSTART;VALUE=DATE:20261211
 DTEND;VALUE=DATE:20261212
 SUMMARY:Black bin (general waste)
-DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+DESCRIPTION:Confirmed by Watford Council. Out the night before or by 6am.
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
@@ -183,6 +165,24 @@ DTSTAMP:20270115T000000Z
 DTSTART;VALUE=DATE:20270115
 DTEND;VALUE=DATE:20270116
 SUMMARY:Green bin (garden waste)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:black-20270122@watford-bins
+DTSTAMP:20270122T000000Z
+DTSTART;VALUE=DATE:20270122
+DTEND;VALUE=DATE:20270123
+SUMMARY:Black bin (general waste)
+DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
+TRANSP:TRANSPARENT
+END:VEVENT
+BEGIN:VEVENT
+UID:food-20270122@watford-bins
+DTSTAMP:20270122T000000Z
+DTSTART;VALUE=DATE:20270122
+DTEND;VALUE=DATE:20270123
+SUMMARY:Food bin (food waste)
 DESCRIPTION:Projected from usual schedule - check around bank holidays. Out the night before or by 6am.
 TRANSP:TRANSPARENT
 END:VEVENT
